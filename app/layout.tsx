@@ -20,25 +20,28 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase,
   title: {
-    default: "Tayyab Munir | Graphic Designer",
+    default: "Tayyab Munir — Strategic Visual Designer",
     template: "%s | Tayyab Munir",
   },
-  description: "Portfolio of Tayyab Munir, a graphic designer specializing in strategic visual design, branding, social media graphics, and digital creative work.",
+  description:
+    "Strategic visual designer helping brands, founders and professionals build clear, confident visual identities through branding, personal branding and digital design.",
   applicationName: "Tayyab Munir Portfolio",
   authors: [{ name: "Tayyab Munir" }],
   creator: "Tayyab Munir",
   openGraph: {
-    title: "Tayyab Munir | Graphic Designer",
-    description: "Graphic design, brand identity, social media graphics, and marketing materials by Tayyab Munir.",
+    title: "Tayyab Munir — Strategic Visual Designer",
+    description:
+      "Strategic visual designer helping brands, founders and professionals build clear, confident visual identities through branding, personal branding and digital design.",
     type: "website",
     locale: "en_US",
     siteName: "Tayyab Munir Portfolio",
-    images: [{ url: "/images/profile/tayyab image new.jpg.jpeg", alt: "Tayyab Munir, graphic designer" }],
+    images: [{ url: "/images/profile/tayyab image new.jpg.jpeg", alt: "Tayyab Munir, strategic visual designer" }],
   },
   twitter: {
-    card: "summary",
-    title: "Tayyab Munir | Graphic Designer",
-    description: "Graphic design, brand identity, social media graphics, and marketing materials by Tayyab Munir.",
+    card: "summary_large_image",
+    title: "Tayyab Munir — Strategic Visual Designer",
+    description:
+      "Strategic visual designer helping brands, founders and professionals build clear, confident visual identities through branding, personal branding and digital design.",
     images: ["/images/profile/tayyab image new.jpg.jpeg"],
   },
   icons: {

@@ -17,3 +17,4 @@ export default function ServicesPage() {
     <CTA heading="Have a project in mind?" label="Contact Me" />
   </div>;
 }
+
