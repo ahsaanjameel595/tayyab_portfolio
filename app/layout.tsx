@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Footer } from "@/components/Footer";
 import { Navbar } from "@/components/Navbar";
-import { CustomCursor } from "@/components/CustomCursor";
 import "./globals.css";
 
 const metadataBase = new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000");
@@ -35,14 +34,14 @@ export const metadata: Metadata = {
     type: "website",
     locale: "en_US",
     siteName: "Tayyab Munir Portfolio",
-    images: [{ url: "/images/profile/tayyab image new.jpg.jpeg", alt: "Tayyab Munir, strategic visual designer" }],
+    images: [{ url: "/images/profile/tayyab-profile.jpg", alt: "Tayyab Munir, strategic visual designer" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Tayyab Munir — Strategic Visual Designer",
     description:
       "Strategic visual designer helping brands, founders and professionals build clear, confident visual identities through branding, personal branding and digital design.",
-    images: ["/images/profile/tayyab image new.jpg.jpeg"],
+    images: ["/images/profile/tayyab-profile.jpg"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -57,7 +56,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body className="min-h-full flex flex-col">
         <Navbar />
-        <CustomCursor />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

@@ -128,24 +128,24 @@ export function ContactForm() {
 			<div className="grid gap-6 md:grid-cols-2">
 				<label className="block text-sm font-medium">
 					Name
-					<input className="mt-2 w-full border-b border-line bg-transparent px-0 py-3 outline-none placeholder:text-muted focus:border-foreground" type="text" name="name" placeholder="Your name" value={values.name} onChange={(event) => updateField("name", event.target.value)} required aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "contact-name-error" : undefined} />
-					{errors.name && <span id="contact-name-error" className="mt-2 block text-xs text-error" role="alert">{errors.name}</span>}
+					<input className="mt-2 w-full border-b border-line bg-surface px-0 py-3 outline-none placeholder:text-muted focus:border-accent" type="text" name="name" placeholder="Your name" value={values.name} onChange={(event) => updateField("name", event.target.value)} required aria-invalid={Boolean(errors.name)} aria-describedby={errors.name ? "contact-name-error" : undefined} />
+					{errors.name && <span id="contact-name-error" className="mt-2 block text-xs text-text" role="alert">{errors.name}</span>}
 				</label>
 				<label className="block text-sm font-medium">
 					Email
-					<input className="mt-2 w-full border-b border-line bg-transparent px-0 py-3 outline-none placeholder:text-muted focus:border-foreground" type="email" name="email" placeholder="you@example.com" value={values.email} onChange={(event) => updateField("email", event.target.value)} required aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "contact-email-error" : undefined} />
-					{errors.email && <span id="contact-email-error" className="mt-2 block text-xs text-error" role="alert">{errors.email}</span>}
+					<input className="mt-2 w-full border-b border-line bg-surface px-0 py-3 outline-none placeholder:text-muted focus:border-accent" type="email" name="email" placeholder="you@example.com" value={values.email} onChange={(event) => updateField("email", event.target.value)} required aria-invalid={Boolean(errors.email)} aria-describedby={errors.email ? "contact-email-error" : undefined} />
+					{errors.email && <span id="contact-email-error" className="mt-2 block text-xs text-text" role="alert">{errors.email}</span>}
 				</label>
 			</div>
-			<label className="block text-sm font-medium">Project Type<select className="mt-2 w-full border-b border-line bg-transparent px-0 py-3 outline-none focus:border-foreground" name="projectType" value={values.projectType} onChange={(event) => updateField("projectType", event.target.value)}><option value="" disabled>Select a service</option>{services.map((service) => <option key={service.slug} value={service.slug}>{service.title}</option>)}</select></label>
-			<label className="block text-sm font-medium">Budget <span className="font-normal text-muted">(optional)</span><input className="mt-2 w-full border-b border-line bg-transparent px-0 py-3 outline-none placeholder:text-muted focus:border-foreground" type="text" name="budget" placeholder="Optional" value={values.budget} onChange={(event) => updateField("budget", event.target.value)} /></label>
+			<label className="block text-sm font-medium">Project Type<select className="mt-2 w-full border-b border-line bg-surface px-0 py-3 outline-none focus:border-accent" name="projectType" value={values.projectType} onChange={(event) => updateField("projectType", event.target.value)}><option value="" disabled>Select a service</option>{services.map((service) => <option key={service.slug} value={service.slug}>{service.title}</option>)}</select></label>
+			<label className="block text-sm font-medium">Budget <span className="font-normal text-muted">(optional)</span><input className="mt-2 w-full border-b border-line bg-surface px-0 py-3 outline-none placeholder:text-muted focus:border-accent" type="text" name="budget" placeholder="Optional" value={values.budget} onChange={(event) => updateField("budget", event.target.value)} /></label>
 			<label className="block text-sm font-medium">
 				Message
-				<textarea className="mt-2 min-h-32 w-full resize-y border-b border-line bg-transparent px-0 py-3 outline-none placeholder:text-muted focus:border-foreground" name="message" placeholder="Tell me a little about the project" value={values.message} onChange={(event) => updateField("message", event.target.value)} required aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "contact-message-error" : undefined} />
-				{errors.message && <span id="contact-message-error" className="mt-2 block text-xs text-error" role="alert">{errors.message}</span>}
+				<textarea className="mt-2 min-h-32 w-full resize-y border-b border-line bg-surface px-0 py-3 outline-none placeholder:text-muted focus:border-accent" name="message" placeholder="Tell me a little about the project" value={values.message} onChange={(event) => updateField("message", event.target.value)} required aria-invalid={Boolean(errors.message)} aria-describedby={errors.message ? "contact-message-error" : undefined} />
+				{errors.message && <span id="contact-message-error" className="mt-2 block text-xs text-text" role="alert">{errors.message}</span>}
 			</label>
-			<button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="inline-flex items-center bg-accent px-5 py-3 text-sm font-medium text-white transition hover:bg-accent-dark disabled:cursor-not-allowed disabled:opacity-60">{isSubmitting ? "Sending..." : "Send Project Details"}</button>
-			{status && <p className={`text-xs leading-5 ${status.type === "success" ? "text-success" : "text-error"}`} role={status.type === "success" ? "status" : "alert"} aria-live={status.type === "success" ? "polite" : "assertive"}>{status.message}</p>}
+			<button type="submit" disabled={isSubmitting} aria-busy={isSubmitting} className="inline-flex items-center bg-accent px-5 py-3 text-sm font-medium text-on-accent transition-colors duration-200 hover:bg-accent-hover disabled:cursor-not-allowed disabled:opacity-60">{isSubmitting ? "Sending..." : "Send Project Details"}</button>
+			{status && <p className="text-xs leading-5 text-text" role={status.type === "success" ? "status" : "alert"} aria-live={status.type === "success" ? "polite" : "assertive"}>{status.message}</p>}
 		</form>
 	);
 }

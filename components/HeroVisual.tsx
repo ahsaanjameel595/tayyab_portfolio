@@ -40,5 +40,5 @@ export function HeroVisual({ src, alt }: HeroVisualProps) {
     return () => { cancelAnimationFrame(frameId); frame.removeEventListener("pointermove", onMove); frame.removeEventListener("pointerleave", reset); };
   }, []);
 
-  return <div ref={frameRef} className="hero-image-frame hero-stagger relative aspect-[4/5] overflow-hidden rounded-lg border border-line bg-surface-muted p-3 shadow-[0_24px_60px_rgba(23,23,23,0.12)]" style={{ "--hero-delay": "280ms" } as CSSProperties}><div className="relative h-full w-full overflow-hidden rounded-md"><Image ref={imageRef} src={src} alt={alt} fill priority sizes="(min-width: 768px) 34vw, 100vw" className="hero-image object-cover" /></div><span className="hero-image-rule" aria-hidden="true" /></div>;
+  return <div ref={frameRef} className="hero-image-frame hero-stagger relative aspect-[4/5] overflow-hidden rounded-lg border border-line bg-bg p-3" style={{ "--hero-delay": "280ms" } as CSSProperties}><div className="relative h-full w-full overflow-hidden rounded-md"><Image ref={imageRef} src={src} alt={alt} fill priority sizes="(min-width: 768px) 34vw, 100vw" className="hero-image object-cover" /></div><span className="hero-image-rule" aria-hidden="true" /></div>;
 }

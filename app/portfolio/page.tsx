@@ -9,6 +9,9 @@ export const metadata: Metadata = {
 	title: "Portfolio",
 	description: "Selected graphic design, brand identity, and stationery work by Tayyab Munir.",
 };
+
+const projectCopies = [false, true];
+
 export default function PortfolioPage() {
 	return (
 		<div>
@@ -28,13 +31,21 @@ export default function PortfolioPage() {
 				</div>
 			</section>
 
-			<section className="border-y border-line bg-surface-muted">
+			<section className="border-y border-line bg-bg-alt">
 				<div className="mx-auto max-w-6xl px-6 py-24">
-				<div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-					{projects.map((project) => (
-						<ProjectCard key={project.slug} project={project} />
-					))}
-				</div>
+					<div className="project-marquee-wrap">
+						<div className="project-marquee-track">
+							{projectCopies.map((isDuplicate, copyIndex) => (
+								  <div key={copyIndex} className="project-marquee-group" aria-hidden={isDuplicate} inert={isDuplicate}>
+									{projects.map((project) => (
+										<div key={project.slug} className="project-marquee-item">
+											<ProjectCard project={project} className="h-full" />
+										</div>
+									))}
+								</div>
+							))}
+						</div>
+					</div>
 				</div>
 			</section>
 

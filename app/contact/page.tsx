@@ -17,7 +17,7 @@ export default function ContactPage() {
 				description="Have a design project in mind? Share a few details and start a conversation about how Tayyab can help shape it visually."
 			/>
 
-			<section className="border-y border-line bg-surface-muted">
+			<section className="border-y border-line bg-bg-alt">
 				<div className="mx-auto grid max-w-6xl gap-16 px-6 py-24 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
 					<div>
 						<SectionHeading eyebrow="Contact information" title="Start with a direct connection." />

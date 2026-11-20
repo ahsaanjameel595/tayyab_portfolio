@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/Button";
 import { Hero } from "@/components/Hero";
+import { ScrollReveal } from "@/components/ScrollReveal";
 import { SectionHeading } from "@/components/SectionHeading";
+import { StackedCaseStudy } from "@/components/StackedCaseStudy";
+import { projects } from "@/data/projects";
 import { faqs, processSteps } from "@/data/content";
 
 const proofItems = [
@@ -35,24 +38,29 @@ const serviceGroups = [
   },
 ];
 
-const featuredProjects = [
+const testimonialCopies = [false, true];
+
+const reviewScreenshots = [
   {
-    title: "Syntrix",
-    category: "Tech Brand Identity & Visual Guidelines",
-    image: "/images/projects/tayyab-1.png",
-    summary: "A complete visual identity designed to give Syntrix a clearer and more consistent brand presence.",
+    src: "/images/testimonials/client-review.jpeg",
+    alt: "LinkedIn recommendation from Amit Mehta, Vice President at Accenture",
+    caption: "Amit Mehta • Vice President, Accenture",
+    width: 777,
+    height: 385,
   },
   {
-    title: "Brand Stationery",
-    category: "Business Stationery",
-    image: "/images/projects/tayyab-3.png",
-    summary: "Clean, premium stationery built to make the brand feel established and professional.",
+    src: "/images/testimonials/client-review-2.jpeg",
+    alt: "Five-star client testimonial from Francesca Rahimi, Founder",
+    caption: "Francesca Rahimi • Founder",
+    width: 1200,
+    height: 627,
   },
   {
-    title: "Office Identity",
-    category: "Brand Identity Application",
-    image: "/images/projects/tayyab 6.png",
-    summary: "A strong identity presence that extends from a logo system into the physical brand experience.",
+    src: "/images/testimonials/review-3-design.jpeg",
+    alt: "Designed feature summarizing Francesca Rahimi's feedback on a LinkedIn banner redesign",
+    caption: "Francesca Rahimi • Review feature",
+    width: 1080,
+    height: 1350,
   },
 ];
 
@@ -68,8 +76,9 @@ export default function Home() {
       <Hero
         eyebrow="STRATEGIC VISUAL DESIGN"
         title="Make your brand impossible to overlook."
+        highlightedWord="impossible"
         description="I help founders, professionals and growing brands build a clear, confident visual presence through brand identity, personal branding and digital design."
-        image="/images/profile/tayyab image new.jpg.jpeg"
+        image="/images/profile/tayyab-profile.jpg"
         imageAlt="Tayyab Munir, strategic visual designer"
         actions={
           <>
@@ -79,13 +88,13 @@ export default function Home() {
         }
       />
 
-      <section className="overflow-hidden border-y border-line bg-surface-muted/80 py-5" aria-label="Selected client work and design disciplines">
+      <section className="overflow-hidden border-y border-line bg-bg-alt py-5" aria-label="Selected client work and design disciplines">
         <div className="marquee-track flex w-max gap-8 whitespace-nowrap text-[11px] font-medium uppercase tracking-[0.26em] text-muted">
           <span>
             {proofItems.map((item, index) => (
               <span key={item}>
                 {item}
-                {index < proofItems.length - 1 && <span className="mx-6 text-accent">•</span>}
+                {index < proofItems.length - 1 && <span className="mx-6 text-muted">•</span>}
               </span>
             ))}
           </span>
@@ -93,7 +102,7 @@ export default function Home() {
             {proofItems.map((item, index) => (
               <span key={`${item}-repeat`}>
                 {item}
-                {index < proofItems.length - 1 && <span className="mx-6 text-accent">•</span>}
+                {index < proofItems.length - 1 && <span className="mx-6 text-muted">•</span>}
               </span>
             ))}
           </span>
@@ -101,10 +110,10 @@ export default function Home() {
       </section>
 
       <section className="mx-auto max-w-6xl px-6 py-24 md:py-32">
-        <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-20">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-dark">The problem</p>
+        <ScrollReveal className="grid gap-10 md:grid-cols-[0.8fr_1.2fr] md:gap-20">
+          <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">The problem</p>
           <div>
-            <h2 className="text-4xl font-semibold leading-[0.98] tracking-tight text-foreground md:text-6xl">
+            <h2 className="text-4xl font-semibold leading-[0.98] tracking-tight text-text md:text-6xl">
               Your brand is saying something before you do.
             </h2>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-muted">
@@ -114,183 +123,96 @@ export default function Home() {
               I create visual systems that help your brand communicate clearly and confidently wherever people encounter it.
             </p>
           </div>
-        </div>
-      </section>
-
-      <section className="border-y border-line bg-surface-muted py-24">
-        <div className="mx-auto max-w-6xl px-6">
-          <SectionHeading
-            eyebrow="Concept → final"
-            title="From unclear visuals to a stronger visual system."
-            description="A clearer design direction helps the message feel more intentional and more credible."
-          />
-
-          <div className="mt-14 grid gap-6 lg:grid-cols-[1.05fr_1.2fr]">
-            <div className="rounded-3xl border border-line bg-background p-6 md:p-8">
-              <p className="text-sm font-medium uppercase tracking-[0.22em] text-accent-dark">Brief</p>
-              <div className="mt-8 space-y-6">
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted">Challenge</p>
-                  <p className="mt-3 text-2xl font-semibold leading-tight">A brand needs a clearer identity and stronger presence.</p>
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted">Direction</p>
-                  <p className="mt-3 text-lg leading-8 text-muted">A sharper visual language, stronger hierarchy and a more confident presentation.</p>
-                </div>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.2em] text-muted">System</p>
-                  <p className="mt-3 text-lg leading-8 text-muted">Typography, colors, layouts and visual cues designed to communicate value clearly.</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="grid gap-6 md:grid-cols-2">
-              <div className="overflow-hidden rounded-3xl border border-line bg-background p-3">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line bg-surface-muted">
-                  <Image src="/images/profile/tayyab image new.jpg.jpeg" alt="Tayyab Munir profile and personal branding direction" fill className="object-cover" />
-                </div>
-                <div className="px-1 pb-1 pt-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-accent-dark">Concept</p>
-                  <p className="mt-2 text-xl font-semibold">Professional presence</p>
-                </div>
-              </div>
-
-              <div className="overflow-hidden rounded-3xl border border-line bg-background p-3">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-line bg-surface-muted">
-                  <Image src="/images/projects/tayyab-1.png" alt="Syntrix brand identity final logo application" fill className="object-cover" />
-                </div>
-                <div className="px-1 pb-1 pt-4">
-                  <p className="text-xs uppercase tracking-[0.2em] text-accent-dark">Final</p>
-                  <p className="mt-2 text-xl font-semibold">Clear visual identity</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        </ScrollReveal>
       </section>
 
       <section id="services" className="mx-auto max-w-6xl px-6 py-24 md:py-28">
+        <ScrollReveal>
         <SectionHeading
           eyebrow="Services"
           title="Visual design built around your brand."
           description="The work is structured around positioning, clarity and consistency — not just isolated assets."
         />
+        </ScrollReveal>
 
         <div className="mt-14 grid gap-6 md:grid-cols-2">
           {serviceGroups.map((group, index) => (
-            <article key={group.title} className="group rounded-[28px] border border-line bg-background p-7 transition hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_18px_44px_rgba(23,23,23,0.04)] md:p-8">
-              <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-dark">0{index + 1}</p>
-              <h3 className="mt-8 text-3xl font-semibold tracking-tight text-foreground">{group.title}</h3>
+            <ScrollReveal key={group.title} delay={index * 80}>
+            <article className="group h-full rounded-[28px] border border-line bg-surface p-7 transition duration-200 hover:-translate-y-1 hover:border-line md:p-8">
+              <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent">0{index + 1}</p>
+              <h3 className="mt-8 text-3xl font-semibold tracking-tight text-text">{group.title}</h3>
               <p className="mt-4 text-base leading-7 text-muted">{group.description}</p>
-              <ul className="mt-8 space-y-3 text-sm text-foreground/80">
+              <ul className="mt-8 space-y-3 text-sm text-text/80">
                 {group.points.map((point) => (
                   <li key={point} className="flex items-center gap-3">
-                    <span className="h-1.5 w-1.5 rounded-full bg-accent" aria-hidden="true" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-line" aria-hidden="true" />
                     <span>{point}</span>
                   </li>
                 ))}
               </ul>
             </article>
+            </ScrollReveal>
           ))}
         </div>
       </section>
 
-      <section id="work" className="border-y border-line bg-surface-muted py-24">
+      <section id="work" className="border-y border-line bg-bg-alt py-24">
         <div className="mx-auto max-w-6xl px-6">
-          <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <ScrollReveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <SectionHeading
               eyebrow="Selected work"
               title="A strong visual presence, built for real brand communication."
             />
             <Button href="/portfolio" variant="outline">View Portfolio →</Button>
-          </div>
+          </ScrollReveal>
 
           <div className="mt-14 grid gap-6 lg:grid-cols-3">
-            {featuredProjects.map((project) => (
-              <article key={project.title} className="group overflow-hidden rounded-[28px] border border-line bg-background p-3">
-                <div className="relative overflow-hidden rounded-[22px] border border-line bg-surface-muted">
-                  <div className="relative aspect-[4/5] overflow-hidden">
-                    <Image src={project.image} alt={project.title} fill className="object-cover transition duration-700 group-hover:scale-[1.03]" />
+            {projects.map((project, index) => (
+              <ScrollReveal key={project.slug} delay={index * 80}>
+                <article className="group h-full overflow-hidden rounded-[28px] border border-line bg-surface p-3">
+                  {project.slug === "linkedin-banner-2" ? (
+                    <StackedCaseStudy />
+                  ) : (
+                    <div className="relative overflow-hidden rounded-[22px] border border-line bg-bg">
+                      <div className="project-image-frame relative aspect-[4/5] overflow-hidden">
+                        {project.image && <Image src={project.image} alt={project.title} fill sizes="(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw" className="project-image object-cover transition duration-700 group-hover:scale-[1.03]" />}
+                      </div>
+                    </div>
+                  )}
+                  <div className="px-2 pb-2 pt-6">
+                    <p className="project-category text-xs font-medium uppercase tracking-[0.22em] text-muted">{project.category}</p>
+                    <h3 className="project-title mt-3 text-2xl font-semibold tracking-tight text-text">{project.title}</h3>
+                    {project.summary && <p className="mt-3 text-base leading-7 text-muted">{project.summary}</p>}
+                    <Link href="/portfolio" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-text transition-colors duration-200 hover:underline decoration-accent-hover underline-offset-4">
+                      View case study <span aria-hidden="true">→</span>
+                    </Link>
                   </div>
-                </div>
-                <div className="px-2 pb-2 pt-6">
-                  <p className="text-xs font-medium uppercase tracking-[0.22em] text-accent-dark">{project.category}</p>
-                  <h3 className="mt-3 text-2xl font-semibold tracking-tight text-foreground">{project.title}</h3>
-                  <p className="mt-3 text-base leading-7 text-muted">{project.summary}</p>
-                  <Link href="/portfolio" className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-accent-dark transition hover:text-accent">
-                    View case study <span aria-hidden="true">→</span>
-                  </Link>
-                </div>
-              </article>
+                </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="case-studies" className="mx-auto max-w-6xl px-6 py-24 md:py-28">
-        <SectionHeading
-          eyebrow="Case study"
-          title="Design thinking that connects the message to the visual system."
-        />
-
-        <div className="mt-14 space-y-8">
-          {[
-            {
-              name: "Syntrix",
-              challenge: "Create a tech brand identity that feels modern, confident and memorable without losing clarity.",
-              direction: "A bold blue system, sharp geometry and a structured visual language designed to support a tech-forward positioning.",
-              system: "Typography, color, logo geometry and application across physical and digital touchpoints.",
-              image: "/images/projects/tayyab-1.png",
-            },
-            {
-              name: "Business Stationery",
-              challenge: "Turn a professional profile into a more polished and credible first impression.",
-              direction: "A minimal premium direction built around clarity, balance and subtle personality.",
-              system: "Fine typography, clean spacing, soft contrast and business-ready layout structure.",
-              image: "/images/projects/tayyab-3.png",
-            },
-          ].map((item) => (
-            <article key={item.name} className="grid gap-6 overflow-hidden rounded-[32px] border border-line bg-background p-4 md:grid-cols-[0.9fr_1.1fr] md:p-6">
-              <div className="relative min-h-[320px] overflow-hidden rounded-[24px] border border-line bg-surface-muted">
-                <Image src={item.image} alt={`${item.name} case study`} fill className="object-cover" />
-              </div>
-              <div className="flex flex-col justify-center p-2 md:p-6">
-                <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-dark">{item.name}</p>
-                <div className="mt-6 space-y-5">
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-muted">The challenge</p>
-                    <p className="mt-2 text-lg leading-8 text-foreground">{item.challenge}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-muted">The direction</p>
-                    <p className="mt-2 text-lg leading-8 text-muted">{item.direction}</p>
-                  </div>
-                  <div>
-                    <p className="text-xs uppercase tracking-[0.2em] text-muted">The system</p>
-                    <p className="mt-2 text-lg leading-8 text-muted">{item.system}</p>
-                  </div>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="process" className="border-y border-line bg-surface-muted py-24">
+      <section id="process" className="dark-section border-y border-dark-line bg-dark-bg py-24">
         <div className="mx-auto max-w-6xl px-6">
+          <ScrollReveal className="dark-section-heading">
           <SectionHeading
             eyebrow="Process"
             title="From idea to final visual system."
             description="A clear process keeps the work intentional, collaborative and built for real-world use."
           />
+          </ScrollReveal>
 
           <div className="mt-12 grid gap-4 md:grid-cols-5">
-            {processSteps.map((step) => (
-              <article key={step.number} className="relative rounded-[24px] border border-line bg-background p-6">
-                <p className="text-4xl font-semibold text-accent-dark">{step.number}</p>
-                <h3 className="mt-10 text-2xl font-semibold text-foreground">{step.title}</h3>
+            {processSteps.map((step, index) => (
+              <ScrollReveal key={step.number} delay={index * 70}>
+              <article className="relative h-full rounded-[24px] border border-line bg-surface p-6">
+                <p className="text-4xl font-semibold text-accent">{step.number}</p>
+                <h3 className="mt-10 text-2xl font-semibold text-text">{step.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-muted">{step.description}</p>
               </article>
+              </ScrollReveal>
             ))}
           </div>
         </div>
@@ -298,15 +220,18 @@ export default function Home() {
 
       <section id="about" className="mx-auto max-w-6xl px-6 py-24 md:py-28">
         <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:items-center">
-          <div className="relative overflow-hidden rounded-[30px] border border-line bg-surface-muted p-3">
+          <ScrollReveal>
+            <div className="relative overflow-hidden rounded-[30px] border border-line bg-bg p-3">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[24px]">
-              <Image src="/images/profile/tayyab image new.jpg.jpeg" alt="Tayyab Munir portrait" fill className="object-cover" />
+              <Image src="/images/profile/tayyab-profile.jpg" alt="Tayyab Munir portrait" fill sizes="(min-width: 1024px) 45vw, 100vw" className="object-cover" />
             </div>
           </div>
+          </ScrollReveal>
 
+          <ScrollReveal delay={100}>
           <div>
-            <p className="text-sm font-medium uppercase tracking-[0.22em] text-accent-dark">About Tayyab</p>
-            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-foreground md:text-5xl">
+            <p className="text-sm font-medium uppercase tracking-[0.22em] text-muted">About Tayyab</p>
+            <h2 className="mt-5 text-4xl font-semibold leading-tight tracking-tight text-text md:text-5xl">
               Design should make people understand what you stand for.
             </h2>
             <p className="mt-7 text-lg leading-8 text-muted">
@@ -320,55 +245,81 @@ export default function Home() {
               <Button href="/about">View About →</Button>
             </div>
           </div>
+          </ScrollReveal>
         </div>
       </section>
 
-      <section id="testimonials" className="border-y border-line bg-surface-muted py-24">
+      <section id="testimonials" className="light-section border-y border-light-line bg-light-bg py-24">
         <div className="mx-auto max-w-5xl px-6">
-          <p className="text-sm font-medium uppercase tracking-[0.2em] text-accent-dark">Client feedback</p>
-          <div className="mt-8 overflow-hidden rounded-[28px] border border-line bg-background p-3 md:p-5">
-            <div className="relative overflow-hidden rounded-[22px] border border-line bg-surface-muted p-3">
-              <Image
-                src="/images/testimonials/WhatsApp Image 2026-09-26 at 11.27.42 PM.jpeg"
-                alt="Client testimonial from Amit Mehta for Tayyab Munir graphic design work"
-                width={1200}
-                height={700}
-                className="h-auto w-full rounded-[18px] object-cover"
-              />
+          <ScrollReveal>
+            <p className="text-sm font-medium uppercase tracking-[0.2em] text-muted">Client feedback</p>
+          </ScrollReveal>
+          <div className="testimonial-marquee-wrap mt-8" role="region" aria-label="Client testimonials">
+            <div className="testimonial-marquee-track">
+              {testimonialCopies.map((isDuplicate, copyIndex) => (
+                <div key={copyIndex} className="testimonial-marquee-group" aria-hidden={isDuplicate} inert={isDuplicate}>
+                  {reviewScreenshots.map((review) => (
+                    <figure key={review.src} className="testimonial-marquee-item overflow-hidden rounded-lg border border-line bg-surface p-3">
+                      <a
+                        href={review.src}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`Open the full ${review.caption} in a new tab`}
+                        className="group block overflow-hidden rounded-md focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-4"
+                      >
+                        <Image
+                          src={review.src}
+                          alt={review.alt}
+                          width={review.width}
+                          height={review.height}
+                          sizes="(min-width: 1280px) 416px, (min-width: 768px) 38vw, 78vw"
+                          className="h-auto w-full rounded-md object-contain transition-transform duration-500 group-hover:scale-[1.01] motion-reduce:transition-none"
+                        />
+                      </a>
+                      <figcaption className="flex items-center justify-between gap-4 px-1 pt-4">
+                        <span className="text-xs font-medium uppercase tracking-[0.16em] text-muted">Client review</span>
+                        <span className="text-right text-sm text-text">{review.caption}</span>
+                      </figcaption>
+                    </figure>
+                  ))}
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
       <section id="faq" className="mx-auto max-w-4xl px-6 py-24 md:py-28">
+        <ScrollReveal>
         <SectionHeading eyebrow="FAQ" title="A few practical answers." />
-        <div className="mt-12 divide-y divide-line border-y border-line">
+        </ScrollReveal>
+        <ScrollReveal className="mt-12 divide-y divide-line border-y border-line">
           {faqs.map((faq) => (
             <details key={faq.question} className="group py-5">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-lg font-medium text-foreground marker:hidden">
+              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 text-left text-lg font-medium text-text marker:hidden">
                 <span>{faq.question}</span>
-                <span className="text-2xl leading-none text-accent-dark transition group-open:rotate-45">+</span>
+                <span className="text-2xl leading-none text-muted transition group-open:rotate-45">+</span>
               </summary>
               <p className="faq-answer max-w-2xl pt-4 leading-7 text-muted">{faq.answer}</p>
             </details>
           ))}
-        </div>
+        </ScrollReveal>
       </section>
 
       <section className="mx-auto max-w-6xl px-6 pb-24 pt-8 md:pb-28">
-        <div className="overflow-hidden rounded-[32px] border border-line bg-[#1f1f1d] px-6 py-12 text-white shadow-[0_32px_80px_rgba(23,23,23,0.18)] md:px-10 md:py-16">
-          <p className="text-sm font-medium uppercase tracking-[0.22em] text-[#E7B39A]">Next step</p>
-          <h2 className="mt-6 max-w-4xl text-4xl font-semibold leading-[0.98] tracking-tight md:text-6xl">
+        <ScrollReveal className="dark-cta overflow-hidden rounded-[32px] border border-dark-text/20 bg-dark-bg px-6 py-12 text-dark-text md:px-10 md:py-16">
+          <p className="text-sm font-medium uppercase tracking-[0.22em] text-dark-text/70">Next step</p>
+          <h2 className="mt-6 max-w-4xl text-4xl font-semibold leading-[0.98] tracking-tight text-dark-text md:text-6xl">
             Your brand deserves a stronger first impression.
           </h2>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-white/70">
+          <p className="mt-6 max-w-2xl text-lg leading-8 text-dark-text/70">
             Let&apos;s build visuals that represent it properly.
           </p>
           <div className="mt-10 flex flex-wrap gap-4">
             <Button href="/contact">Start a Project →</Button>
             <Button href="/portfolio" variant="outline">View Selected Work →</Button>
           </div>
-        </div>
+        </ScrollReveal>
       </section>
     </div>
   );
